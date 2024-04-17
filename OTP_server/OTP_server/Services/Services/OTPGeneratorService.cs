@@ -38,7 +38,7 @@ namespace OTP_server.Services.Services
             databaseContext.Add(user);
             databaseContext.SaveChanges();
 
-            return new OTPEntity { OTP = GenerateOTPString(OTPLength) };
+            return new OTPEntity { OTP = oneTimePassword };
         }
 
         private string GenerateOTPString(int length)

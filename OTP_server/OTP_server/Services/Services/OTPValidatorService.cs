@@ -24,7 +24,7 @@ namespace OTP_server.Services.Services
             }
 
             var user = databaseContext.Users.Where(x => x.Email == email).FirstOrDefault();
-            if(user is not null && user.HashedOTP is not null)
+            if(user is not null && user.HashedOTP is not null && user.ExpirationDate < DateTime.Now)
             {
                 var passwordsMatch = PasswordEncryptHelper.VerifyPassword(otp, user.HashedOTP);
                 if (passwordsMatch) return true;
