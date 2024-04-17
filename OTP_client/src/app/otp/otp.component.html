@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="header">
+      <h1>OTP Generator</h1>
+    </div>
+  
+    <div class="content">
+      <div>
+        <h2>Enter your email</h2>
+        <input type="email" [(ngModel)]="email" placeholder="Email">
+        <button (click)="generateOTP()">Generate OTP</button>
+      </div>
+  
+      <div *ngIf="otpReceived">
+        <h2>Enter OTP</h2>
+        <input type="text" [(ngModel)]="otp" placeholder="OTP">
+        <button (click)="validateOTP()">Validate OTP</button>
+      </div>
+    </div>
+  </div>

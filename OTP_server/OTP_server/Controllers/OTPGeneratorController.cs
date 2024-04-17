@@ -13,7 +13,7 @@ namespace OTP_server.Controllers
             _otpGenerator = otpGenerator;
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult GenerateOTP(string email, int minutesActive)
         {
             try
