@@ -16,17 +16,9 @@ namespace OTP_server.Controllers
 
 
         [HttpPost]
-        public IActionResult ValidateOTP(string email, string otp)
+        public bool ValidateOTP(string email, string otp)
         {
-            bool isValid = _otpValidator.ValidateOTP(email,otp);
-            if (isValid)
-            {
-                return Ok("OTP is valid.");
-            }
-            else
-            {
-                return BadRequest("Invalid OTP.");
-            }
+            return _otpValidator.ValidateOTP(email, otp);
         }
     }
 }

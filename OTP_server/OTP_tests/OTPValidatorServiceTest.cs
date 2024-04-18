@@ -46,8 +46,8 @@ namespace OTP_tests
             // Arrange
             string email = "test@example.com";
             string otp = "123456";
-            _dbContextMock.Setup(db => db.Users)
-                          .Returns((Microsoft.EntityFrameworkCore.DbSet<User>)new List<User>().AsQueryable());
+            _dbContextMock.Setup(db => db.OneTimePasswordDetails)
+                          .Returns((Microsoft.EntityFrameworkCore.DbSet<OneTimePasswordDetails>)new List<OneTimePasswordDetails>().AsQueryable());
 
             // Act
             var result = _otpValidatorService.ValidateOTP(email, otp);
@@ -62,8 +62,8 @@ namespace OTP_tests
             // Arrange
             string email = "test@example.com";
             string otp = "123456";
-            _dbContextMock.Setup(db => db.Users)
-                          .Returns((Microsoft.EntityFrameworkCore.DbSet<User>)new List<User> { new User { Email = email } }.AsQueryable());
+            _dbContextMock.Setup(db => db.OneTimePasswordDetails)
+                          .Returns((Microsoft.EntityFrameworkCore.DbSet<OneTimePasswordDetails>)new List<OneTimePasswordDetails> { new OneTimePasswordDetails { Email = email } }.AsQueryable());
 
             // Act
             var result = _otpValidatorService.ValidateOTP(email, otp);

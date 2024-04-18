@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OTP_server.Context;
 
@@ -11,9 +12,11 @@ using OTP_server.Context;
 namespace OTP_server.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240418140701_changed-user-to-apropriate-name")]
+    partial class changedusertoapropriatename
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace OTP_server.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("OTP_server.Models.OneTimePasswordDetails", b =>
+            modelBuilder.Entity("OTP_server.Models.OneTimePasswords", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,7 +44,7 @@ namespace OTP_server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OneTimePasswordDetails");
+                    b.ToTable("OneTimePasswords");
                 });
 #pragma warning restore 612, 618
         }

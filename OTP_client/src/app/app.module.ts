@@ -6,6 +6,8 @@ import { OtpComponent } from './otp/otp.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { OtpService } from './services/service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { OtpService } from './services/service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule // Import FormsModule
+    FormsModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule // Import FormsModule
   ],
   providers: [
     HttpClient,

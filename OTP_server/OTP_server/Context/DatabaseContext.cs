@@ -10,7 +10,7 @@ namespace OTP_server.Context
         {
             _configuration = configuration;
         }
-        public DbSet<User> Users { get; set; }
+        public DbSet<OneTimePasswordDetails> OneTimePasswordDetails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

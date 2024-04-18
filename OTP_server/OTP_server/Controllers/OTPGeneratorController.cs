@@ -18,9 +18,9 @@ namespace OTP_server.Controllers
         {
             try
             {
-                var otpConfiguration = _otpGenerator.GenerateOTP(email,minutesActive);
-                if (otpConfiguration == null) return BadRequest();
-                return Ok(otpConfiguration);
+                var otpEntity = _otpGenerator.GenerateOTP(email,minutesActive);
+                if (otpEntity == null) return BadRequest();
+                return Ok(otpEntity);
             }
             catch (Exception ex)
             {

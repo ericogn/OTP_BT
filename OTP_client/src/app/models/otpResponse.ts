@@ -1,4 +1,5 @@
 export interface OtpResponse {
-    expirationDate: string;
+    expirationTime: string;
     otp: string;
   }
+

@@ -77,7 +77,7 @@ namespace OTP_tests
             _otpGeneratorService.GenerateOTP(validEmail, minutesActive);
 
             // Assert
-            var storedUser = _dbContextMock.Object.Users.FirstOrDefault(u => u.Email == validEmail);
+            var storedUser = _dbContextMock.Object.OneTimePasswordDetails.FirstOrDefault(u => u.Email == validEmail);
             storedUser.Should().NotBeNull();
             storedUser.HashedOTP.Should().NotBeNullOrEmpty();
             storedUser.ExpirationDate.Should().BeCloseTo(DateTime.UtcNow.AddMinutes(minutesActive), precision: TimeSpan.FromSeconds(5));
@@ -87,8 +87,8 @@ namespace OTP_tests
         public void GenerateOTP_ShouldReplaceExistingUserInDatabase()
         {
             // Arrange
-            var existingUser = new User { Email = "test@example.com" };
-            _dbContextMock.Object.Users.Add(existingUser);
+            var existingUser = new OneTimePasswordDetails { Email = "test@example.com" };
+            _dbContextMock.Object.OneTimePasswordDetails.Add(existingUser);
             _dbContextMock.Object.SaveChanges();
             string validEmail = "test@example.com";
             int minutesActive = 5;
@@ -100,7 +100,7 @@ namespace OTP_tests
             _otpGeneratorService.GenerateOTP(validEmail, minutesActive);
 
             // Assert
-            var storedUser = _dbContextMock.Object.Users.FirstOrDefault(u => u.Email == validEmail);
+            var storedUser = _dbContextMock.Object.OneTimePasswordDetails.FirstOrDefault(u => u.Email == validEmail);
             storedUser.Should().NotBeNull();
             storedUser.HashedOTP.Should().NotBeNullOrEmpty();
             storedUser.ExpirationDate.Should().BeCloseTo(DateTime.UtcNow.AddMinutes(minutesActive), precision: TimeSpan.FromSeconds(5));

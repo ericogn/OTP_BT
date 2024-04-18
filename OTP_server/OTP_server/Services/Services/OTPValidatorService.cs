@@ -23,11 +23,17 @@ namespace OTP_server.Services.Services
                 return false;
             }
 
-            var user = databaseContext.Users.Where(x => x.Email == email).FirstOrDefault();
-            if(user is not null && user.HashedOTP is not null && user.ExpirationDate < DateTime.Now)
+            var user = databaseContext.OneTimePasswordDetails.Where(x => x.Email == email).FirstOrDefault();
+            if(user is not null && user.HashedOTP is not null && user.ExpirationDate > DateTime.Now)
             {
                 var passwordsMatch = PasswordEncryptHelper.VerifyPassword(otp, user.HashedOTP);
-                if (passwordsMatch) return true;
+                if (passwordsMatch)
+                {
+                    // one time use, so we delete the record if the otp has been confirmed
+                    databaseContext.OneTimePasswordDetails.Remove(user);
+                    databaseContext.SaveChanges();
+                    return true;
+                }
                 return false;
             }
 

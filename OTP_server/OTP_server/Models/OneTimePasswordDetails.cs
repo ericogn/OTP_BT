@@ -2,7 +2,7 @@
 
 namespace OTP_server.Models
 {
-    public class User
+    public class OneTimePasswordDetails
     {
         [Key]
         public Guid Id { get; set; }
