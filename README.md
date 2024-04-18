@@ -32,5 +32,6 @@ This project aims to develop a secure, efficient, and user-friendly system for g
 4. In Package-Manager-Console run update-database to update database schema in your SQL Server Management Studio
 5. Run the API Server
 
+### .NET Core Client
 6. Navigate to OTP_client folder and open it with visual studio code
 7. In terminal run npm run start to start the project then open https://localhost:4200/
